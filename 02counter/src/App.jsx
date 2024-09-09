@@ -8,6 +8,9 @@ function App() {
   const addValue = ()=>{
     // console.log("Clicked", counter);
     // counter = counter + 1;
+    // setCounter(prevCounter => prevCounter + 1);
+    // setCounter(prevCounter => prevCounter + 1);
+    // setCounter(prevCounter => prevCounter + 1);
     setCounter(counter + 1);
   }
 

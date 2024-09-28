@@ -1,11 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
+import {Link, useNavigate} from 'react-router-dom'
+import axios from 'axios'
 
 function Signup() {
+    const [name, setName] = useState();
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
+    const navigate = useNavigate()
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        axios.post('http://localhost:3001/register', {name, email, password})
+        .then(result => {console.log(result)
+            navigate('/login')
+        })
+        .catch(err => console.log(err))
+    }
+
     return (
         <div className='signup'>
             <div className="box">
                 <h2>Register</h2>
-                <form>
+
+                <form onSubmit={handleSubmit}>
                     <div className="name">
                         <label htmlFor="name">Name</label>
                         <input
@@ -14,7 +31,7 @@ function Signup() {
                             autoComplete='off'
                             name='name'
                             className=''
-                        // onChange={{}}
+                            onChange={(e) => setName(e.target.value)}
                         />
                     </div>
 
@@ -26,7 +43,7 @@ function Signup() {
                             autoComplete='off'
                             name='email'
                             className=''
-                        // onChange={{}}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
 
@@ -37,14 +54,14 @@ function Signup() {
                             placeholder='password'
                             name='password'
                             className=''
-                            // onChange={{}}
+                            onChange={(e) => setPassword(e.target.value)}
                         />
                     </div>
 
                     <button type='submit'>Register</button>
                 </form>
                 <p>Already have an account?</p>
-                <button>Login</button>
+                <Link to='/login'>Login</Link>
             </div>
         </div>
     )

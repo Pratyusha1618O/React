@@ -1,15 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Signup.css'
 import '../Login/Login.css'
+import axios from 'axios'
 
 function Signup() {
+  const [name, setName] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    axios.post('http://localhost:3000/signup', {name, email, password})
+    .then(result => console.log(result))
+    .catch(err => console.log(err))
+  }
+
+
   return (
     <div className='container'>
       <div className="box">
         <h4>Sign Up</h4>
 
-        <form >
+        <form onSubmit={handleSubmit}>
           <div className="field">
             <label htmlFor="name">Name</label>
             <input
@@ -19,7 +32,7 @@ function Signup() {
               name='name'
               className=''
               required
-            // onChange={(e) => setName(e.target.value)}
+              onChange={(e) => setName(e.target.value)}
             />
           </div>
 
@@ -32,7 +45,7 @@ function Signup() {
               name='email'
               className=''
               required
-            // onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
 
@@ -44,7 +57,7 @@ function Signup() {
               name='password'
               className=''
               required
-            // onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
 

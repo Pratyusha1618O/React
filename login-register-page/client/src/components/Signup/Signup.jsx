@@ -11,7 +11,7 @@ function Signup() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    axios.post('http://localhost:3000/signup', {name, email, password})
+    axios.post('http://localhost:3001/signup', {name, email, password})
     .then(result => console.log(result))
     .catch(err => console.log(err))
   }
@@ -62,7 +62,7 @@ function Signup() {
           </div>
 
           <div className="signup-btn">
-            <button type='submit'>SignUp</button>
+            <button type='submit'> SignUp </button>
           </div>
         </form>
 

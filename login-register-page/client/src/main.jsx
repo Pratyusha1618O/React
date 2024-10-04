@@ -9,6 +9,8 @@ import About from './components/About/About.jsx'
 import Contact from './components/Contact/Contact.jsx'
 import Login from './components/Login/Login.jsx'
 import Signup from './components/Signup/Signup.jsx'
+import RegOptions from './components/RegOptions/RegOptions.jsx'
+import App from './App.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -19,7 +21,7 @@ const router = createBrowserRouter(
         <Route path='/contact' element={<Contact />} ></Route>
         <Route path='/login' element={<Login />} ></Route>
         <Route path='/signup' element={<Signup />} ></Route>
-
+        <Route path='/options' element={<RegOptions />} ></Route>
       </Route>
     </>
   )

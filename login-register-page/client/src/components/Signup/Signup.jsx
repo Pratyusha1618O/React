@@ -78,7 +78,10 @@
 
 // export default Signup
 
+
+
 import React, { useState } from "react";
+import {Link} from 'react-router-dom'
 import './Signup.css'
 
 const Signup = () => {
@@ -150,34 +153,61 @@ const Signup = () => {
   return (
     <div>
       {step === 1 && (
-        <form onSubmit={handleSignupSubmit}>
-          <h2>Signup</h2>
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={signupData.email}
-            onChange={handleSignupChange}
-            required
-          />
-          <input
-            type="text"
-            name="username"
-            placeholder="Username"
-            value={signupData.username}
-            onChange={handleSignupChange}
-            required
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={signupData.password}
-            onChange={handleSignupChange}
-            required
-          />
-          <button type="submit">Register</button>
-        </form>
+        <div className="container">
+          <div className="box">
+            <form onSubmit={handleSignupSubmit}>
+              <h4>Signup</h4>
+
+              <div className="field">
+                <label htmlFor="username">Username</label>
+                <input
+                  type="text"
+                  name="username"
+                  placeholder="Username"
+                  value={signupData.username}
+                  onChange={handleSignupChange}
+                  required
+                />
+              </div>
+
+              <div className="field">
+                <label htmlFor="email">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  value={signupData.email}
+                  onChange={handleSignupChange}
+                  required
+                />
+              </div>
+
+              <div className="field">
+                <label htmlFor="password">Password</label>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  value={signupData.password}
+                  onChange={handleSignupChange}
+                  required
+                />
+              </div>
+
+              <div className="signup-btn">
+                <button type="submit">Register</button>
+              </div>
+
+            </form>
+
+            <p>Already have an account?</p>
+            <div className="log-btn">
+              <Link to="/login"><button> Login </button></Link>
+            </div>
+          </div>
+
+        </div>
+
       )}
 
       {step === 2 && (
